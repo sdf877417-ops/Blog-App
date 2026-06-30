@@ -18,7 +18,7 @@ function MyProfile() {
     }
     // alert("called !");
     setIsUpdating(true);
-    console.log("value in data :", data);
+    console.log("value in data :", data); 
     try {
       const upd = await users.put(`/updateUser/${profile._id}`, data);
       toast.success("user updated");

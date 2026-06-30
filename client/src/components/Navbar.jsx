@@ -1,8 +1,22 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigation } from "react-router-dom";
+import { useAuth } from "../context/AuthProvider";
 
 function Navbar() {
+  // const navigate = useNavigation();
+
   const [menuOpen, setMenuOpen] = useState(false);
+  const { profile, isAuthenticated, setIsAuthenticated } = useAuth();
+
+  const handleLogout = () => {
+    
+    try {
+      setIsAuthenticated(false);
+      <Navigate to={"/"}/>
+    } catch (error) {
+      console.log("erorr :", error.message);
+    }
+  };
 
   return (
     <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-md border-b">
@@ -61,10 +75,10 @@ function Navbar() {
             </Link>
 
             <Link
-              to="/login"
+              // to="/login"
               className="bg-slate-900 hover:bg-black text-white px-4 py-2 rounded-xl font-semibold transition"
             >
-              Login
+              <button onClick={() => handleLogout()}>Login</button>
             </Link>
           </div>
 
@@ -134,7 +148,7 @@ function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 className="bg-slate-900 text-white p-3 rounded-xl text-center font-semibold"
               >
-                Login
+               Logout
               </Link>
             </div>
           </div>

@@ -1,10 +1,14 @@
+import { useAuth } from "../context/AuthProvider";
+
 const About = () => {
+  const { profile } = useAuth();
+  console.log(`value in profile :--->`,profile)
   return (
     <div className="bg-slate-950 text-white min-h-screen">
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-6 py-20 text-center">
         <h1 className="text-5xl md:text-7xl font-extrabold">
-          About <span className="text-cyan-400">Syed Furqan</span>
+          About <span className="text-cyan-400">{profile.name}</span>
         </h1>
 
         <p className="mt-6 text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-8">
@@ -21,7 +25,7 @@ const About = () => {
           <h2 className="text-3xl font-bold text-cyan-400 mb-4">Who Am I?</h2>
 
           <p className="text-gray-300 leading-8">
-            Hi, I'm <strong>Syed Furqan</strong>, a passionate MERN Stack
+            Hi, I'm <strong>{profile?.name}</strong>, a passionate MERN Stack
             Developer and technology enthusiast who enjoys building scalable web
             applications and sharing practical knowledge with developers.
           </p>
@@ -138,7 +142,7 @@ const About = () => {
         </p>
 
         <h3 className="text-3xl font-bold text-cyan-400 mt-10">
-          — Syed Furqan
+          — {profile?.name}
         </h3>
 
         <p className="text-gray-400 mt-2">
