@@ -1,31 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import { users } from "../API/api.js";
-// import { Divide } from "lucide-react";
-// import { useAuth } from "../context/AuthProvider";
-
-// function MyProfile() {
-//   const { profile } = useAuth();
-//   console.log("value in profile : ------->", profile);
-
-//   {
-//     if (profile) {
-//       return (
-//         <div>
-//           <div>{profile.name}</div>
-//           <h1>{profile.role}</h1>
-//           <img src={profile?.photo} alt="" />
-//         </div>
-//       );
-//     } else {
-//       return <div>no data in myprofile</div>;
-//     }
-//   }
-// }
-
-// export default MyProfile;
-
-// chat gpt code
-
 import React, { useEffect, useState } from "react";
 import { Mail, GraduationCap, ShieldCheck, User, Phone } from "lucide-react";
 import { useAuth } from "../context/AuthProvider";
