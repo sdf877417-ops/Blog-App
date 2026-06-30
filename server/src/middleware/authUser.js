@@ -12,7 +12,7 @@ const isAuthenticated = async (req, res, next) => {
     const token = req.cookies.token;
 
     if (!token) {
-      return res.status(400).json({ messaage: "user in not verified" });
+      return res.status(400).json({ messaage: "user is not verified" });
     }
 
     console.log(`at authenicated token : `, req.cookies);

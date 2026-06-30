@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import { users } from "../API/api.js";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthProvider.jsx";
 
 function Login() {
+  const navigate = useNavigate();
 
-  const navigate= useNavigate()
+  const { blogs, profile, setProfile, isAuthenticated, setIsAuthenticated } =
+    useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,16 +25,23 @@ function Login() {
         role,
       });
 
-      console.log(res.data);
+      console.log("res.data :-- ", res.data);
+      setProfile(res.data.user);
+      setIsAuthenticated(true);
       // alert(res.data.message || "Login Successful");
       toast.success(res.data.message);
+
+      // fetch myProfile()  calling etchProfile API here for direct data in profile
+      // const profile = await users.get("/getMyProfile");
+      // console.log(`profile.data at login.jsx :`, profile.data);
+      // setProfile(profile.data);
 
       setEmail("");
       setPassword("");
       setRole("");
 
-      navigate("/")
-      
+      // navigate("/dashboard");
+      navigate("/");
     } catch (error) {
       console.log("erorr :", error);
       console.log("erorr.response :", error.response);

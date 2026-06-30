@@ -1,7 +1,7 @@
 // chat bjai a
 import React, { useState } from "react";
 import { users } from "../API/api.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -12,6 +12,8 @@ function SignUp() {
   const [education, setEducation] = useState("BCA");
   const [photo, setPhoto] = useState("");
   const [photoPreview, setPhotoPreview] = useState("");
+
+  const navigate = useNavigate();
 
   const changePhotoHandler = (e) => {
     const file = e.target.files[0];
@@ -55,6 +57,7 @@ function SignUp() {
       setEducation("");
       setPhoto("");
       setPhotoPreview("");
+      navigate("/");
     } catch (error) {
       console.log("Full Error:", error);
 

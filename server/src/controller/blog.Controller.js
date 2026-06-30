@@ -1,9 +1,10 @@
 import blogModel from "../models/Blog.Model.js";
+import userModel from "../models/user.Model.js";
 import cloudinary from "../services/cloudinary.js";
 
 const createBlog = async (req, res) => {
   try {
-    const { title, category, about } = req.body;
+    const { title, category, about, adminPhoto } = req.body;
     if (!title || !category || !about) {
       return res.status(400).json({ message: "all fields are required !" });
     }
@@ -11,7 +12,7 @@ const createBlog = async (req, res) => {
     console.log(`value in req.file: `, req.file);
 
     const adminName = req?.user?.adminName;
-    const adminPhoto = req?.user?.adminPhoto;
+    // const adminPhoto = req?.user?.adminPhoto;
     const createdBy = req?.user?._id;
 
     const result = await cloudinary.uploader.upload(req.file.path);
@@ -25,7 +26,7 @@ const createBlog = async (req, res) => {
       about,
       category,
       adminName,
-      adminPhoto,
+      adminPhoto: adminPhoto,
       createdBy,
       blogImage: {
         publicId: result.public_Id,
@@ -88,7 +89,7 @@ const updateBlog = async (req, res) => {
 
     const upd = await blogModel.findByIdAndUpdate(
       req.params.id,
-          { title, category, about, blogImage: result.secure_url },
+      { title, category, about, blogImage: result.secure_url },
 
       { new: true },
     );
@@ -137,6 +138,17 @@ const getMyBlog = async (req, res) => {
   }
 };
 
+const updateUser = async (req, res) => {
+  const {} = req.body;
+  try {
+    const upd = await userModel.findByIdAndUpdate(req.params.id, req.body);
+    console.log(`value in upd`, upd);
+    return res.status(200).json(upd || "updating ");
+  } catch (error) {
+    console.error("error :", error.message);
+  }
+};
+
 export {
   createBlog,
   deleteBlog,
@@ -144,4 +156,5 @@ export {
   getAllBlogs,
   getOneBlog,
   getMyBlog,
+  updateUser,
 };

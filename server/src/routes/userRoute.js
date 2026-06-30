@@ -1,12 +1,14 @@
 import express from "express";
 import {
   getAdmin,
+  getMyProfile,
   login,
   logout,
   signUp,
 } from "../controller/userController.js";
 import upload from "../services/multer.js";
-import { isAuthenticated } from "../middleware/authUser.js";
+import { isAdmin, isAuthenticated } from "../middleware/authUser.js";
+import { updateUser } from "../controller/blog.Controller.js";
 
 const userRouter = express.Router();
 
@@ -17,5 +19,14 @@ userRouter.post("/login", login);
 userRouter.post("/logout", logout);
 
 userRouter.get("/getAdmin", isAuthenticated, getAdmin);
+
+userRouter.get("/getMyProfile", isAuthenticated, getMyProfile);
+
+userRouter.put(
+  "/updateUser/:id",
+  isAuthenticated,
+  isAdmin("admin"),
+  updateUser,
+);
 
 export default userRouter;

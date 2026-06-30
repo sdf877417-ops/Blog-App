@@ -8,7 +8,6 @@ function Creator() {
   const getAdmin = async () => {
     try {
       const { data } = await users.get("/getAdmin");
-      console.log(`value at creator data :`, data);
       setAdmin(data);
     } catch (error) {
       console.error("error : ", error.message);
@@ -19,7 +18,6 @@ function Creator() {
 
   useEffect(() => {
     getAdmin();
-    console.log(`values in admins :`, admin);
   }, []);
   return (
     <div className="bg-gray-200">

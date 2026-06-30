@@ -11,26 +11,30 @@ import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
 import { useAuth } from "./context/AuthProvider";
 import { Toaster } from "react-hot-toast";
+import Creator from "./Home/Creator";
 
 function App() {
+  const { profile, isAuthenticated } = useAuth();
   const location = useLocation();
   const hideNavBarFooter = ["/dashboard", "/login", "register"].includes(
     location.pathname,
   );
+
+  console.log(`value after login :--> :`, profile);
 
   return (
     <div>
       {!hideNavBarFooter && <Navbar />}
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/" element={isAuthenticated ? <Home /> : <Login />} />
+        <Route path="/blog" element={<Blogs />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        {/* <Route path="/  " element={<Home />} /> */}
+        <Route path="/creator" element={<Creator />} />
       </Routes>
 
       {!hideNavBarFooter && <Footer />}

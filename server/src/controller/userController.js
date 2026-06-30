@@ -8,7 +8,7 @@ const signUp = async (req, res) => {
   console.log(`reqqust aayi `);
   try {
     const { name, email, password, phone, education, role } = req.body;
-    
+
     if (!name || !email || !password || !education || !role || !phone) {
       return res.status(400).json({ message: "all fields are required !" });
     }
@@ -86,9 +86,7 @@ const login = async (req, res) => {
 
     return res.status(200).json({
       message: "welcome User ",
-      user: {
-        existUser,
-      },
+      user: existUser,
       token: token,
     });
   } catch (error) {
@@ -101,7 +99,7 @@ const logout = async (req, res) => {
     console.log(` logout value inn req.user `, req.user);
     res.clearCookie("token", { httpOnly: true });
 
-    return res.status(400).json({ message: "logout successfulll" });
+    return res.status(200).json({ message: "logout successfulll" });
   } catch (error) {
     console.error("eror :", error.message);
   }
@@ -119,4 +117,24 @@ const getAdmin = async (req, res) => {
   }
 };
 
-export { signUp, login, logout, getAdmin };
+const getMyProfile = async (req, res) => {
+  try {
+    console.log(`value in req.user:`, req.user._id);
+    // const numId= Number(req.user._id)
+    // console.log(`value in numId :`, numId);
+    if (!req.user) {
+      return res
+        .status(400)
+        .json({ message: "login first and get verified !" });
+    }
+
+    const getById = await userModel.findOne(req.user._id);
+    // console.log(`your profile is  getMypfole :`, getById);
+
+    return res.status(200).json(req.user);
+  } catch (error) {
+    console.error("error ", error.message);
+  }
+};
+
+export { signUp, login, logout, getAdmin, getMyProfile };

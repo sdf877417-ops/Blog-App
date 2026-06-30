@@ -1,7 +1,32 @@
-
+import axios from "axios";
 import React from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 function Contact() {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = async (data) => {
+    console.log(data);
+    const userInfo = {
+      access_key: "cf3eb700-683e-4427-a72e-c13c5e4da030",
+      name: data.name,
+      email: data.email,
+      message: data.message,
+    };
+    try {
+      await axios.post("https://api.web3forms.com/submit", userInfo);
+      toast.success("message sent successfully !");
+    } catch (error) {
+      console.log("error res :", error.response);
+    }
+  };
+
   return (
     <section className="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden">
@@ -21,17 +46,23 @@ function Contact() {
               out the form and our team will get back to you soon.
             </p>
 
-            <form className="space-y-5">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
               <div>
-                <label className="block text-gray-700 font-medium mb-2">
-                  Full Name
-                </label>
+                <input
+                  type="hidden"
+                  name="access_key"
+                  value="cf3eb700-683e-4427-a72e-c13c5e4da030"
+                ></input>
 
+                <label className="block text-gray-700 font-medium mb-2">Full Name</label>
                 <input
                   type="text"
+                  name="name"
                   placeholder="Enter your name"
                   className="w-full h-11 px-4 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  {...register("name", { required: true })}
                 />
+                {errors.name && <span>This field is required</span>}
               </div>
 
               <div>
@@ -40,22 +71,13 @@ function Contact() {
                 </label>
 
                 <input
-                  type="email"
+                  type="email"  
                   placeholder="Enter your email"
                   className="w-full h-11 px-4 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  name="email"
+                  {...register("email", { required: true })}
                 />
-              </div>
-
-              <div>
-                <label className="block text-gray-700 font-medium mb-2">
-                  Subject
-                </label>
-
-                <input
-                  type="text"
-                  placeholder="Subject"
-                  className="w-full h-11 px-4 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                />
+                {errors.email && <span>This field is required</span>}
               </div>
 
               <div>
@@ -67,7 +89,9 @@ function Contact() {
                   rows="4"
                   placeholder="Write your message..."
                   className="w-full p-4 border border-gray-300 rounded-lg resize-none outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                ></textarea>
+                  {...register("message", { required: true })}
+                />
+                {errors.message && <span>This field is required</span>}
               </div>
 
               <button
