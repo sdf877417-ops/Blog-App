@@ -1,49 +1,3 @@
-// import React, { useState } from "react";
-// import { useAuth } from "../context/AuthProvider";
-// import SideBar from "../Dashboard/SideBar";
-// import MyProfile from "../Dashboard/MyProfile";
-// import CreateBlog from "../Dashboard/CreateBlog";
-// import UpateBlog from "../Dashboard/UpateBlog";
-// import Myblog from "../Dashboard/Myblog";
-
-// function Dashboard() {
-//   const [component, setComponent] = useState("My Profile");
-
-//   const data = useAuth();
-//   console.log(data);
-
-//   return (
-//     <div className="flex  h-[10vh] ">
-//       <div className="w-[30%]">
-//         <SideBar component={component} setComponent={setComponent}/>
-//       </div>
-
-//       {/* {component === "My Profile" ? (
-//         <MyProfile />
-//       ) : component === "Create Blog" ? (
-//         <CreateBlog />
-//       ) : component === "Update Blog" ? (
-//         <UpateBlog />
-//       ) : (
-//         <Myblog />
-//       )}
-//        */}
-
-//       <div className="w-[50%] text-center">
-//         {component == "My Profile" && <MyProfile />}
-//         {component == "Create Blog" && <CreateBlog />}
-//         {component == "My Blog" && <Myblog />}
-//         {/* {component == "Create Blog" && <CreateBlog />} */}
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Dashboard;
-
-
-// chat gpt 
-
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -98,6 +52,7 @@ function Dashboard() {
 
           <h1 className="text-2xl font-bold text-gray-800 ">
             Dashboard
+            
           </h1>
 
           <div></div>

@@ -1,81 +1,3 @@
-// import React from "react";
-
-// function Footer() {
-//   return (
-//     <div className="w-max-screen mx-10">
-//       {/* parent div  */}
-//       <div className=" grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 gap-5 m-6   ">
-//         <div className="text-center max-w-[80%] m-2">
-//           <h1 className="text-center text-xl ">Product </h1>
-
-//           <ul className="p-2 m-3 ">
-//             <li className="p-2 m-1">a </li>
-//             <li className="p-2 m-1">b </li>
-//             <li className="p-2 m-1">c </li>
-//             <li className="p-2 m-1">d </li>
-//           </ul>
-//         </div>
-
-//         {/* 2  */}
-//         <div className="text-center max-w-[80%] m-2">
-//           <h1 className="text-center text-xl ">Design to code </h1>
-
-//           <ul className="p-2 m-3 ">
-//             <li className="p-2 m-1">a </li>
-//             <li className="p-2 m-1">b </li>
-//             <li className="p-2 m-1">c </li>
-//             <li className="p-2 m-1">d </li>
-//           </ul>
-//         </div>
-
-//         {/* 3  */}
-//         <div className="text-center max-w-[80%] m-2">
-//           <h1 className="text-center text-xl ">Comaparison </h1>
-
-//           <ul className="p-2 m-3 ">
-//             <li className="p-2 m-1">a </li>
-//             <li className="p-2 m-1">b </li>
-//             <li className="p-2 m-1">c </li>
-//             <li className="p-2 m-1">d </li>
-//           </ul>
-//         </div>
-
-//         {/* 4 */}
-
-//         <div className="text-center max-w-[80%] m-2">
-//           <h1 className="text-center text-xl ">Company </h1>
-
-//           <ul className="p-2 m-3 ">
-//             <li className="p-2 m-1">a </li>
-//             <li className="p-2 m-1">b </li>
-//             <li className="p-2 m-1">c </li>
-//             <li className="p-2 m-1">d </li>
-//           </ul>
-//         </div>
-//       </div>
-
-//       {/* lower Footer  */}
-//       {/* parent  */}
-
-//       <div className=" grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 gap-5 m-6   ">
-//         {/* 1 */}
-//          <div className="text-center max-w-[80%] m-2">
-
-//         </div>
-//         {/* 2  */}
-//         <div></div>
-//         {/* 3  */}
-//         <div></div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Footer;
-
-
-// chat bhai
-
 import React from "react";
 import {
   FaGithub,
@@ -165,7 +87,7 @@ function Footer() {
             </a>
 
             <a
-              href="#"
+              href="http://instagram.com/s"
               className="bg-slate-800 p-3 rounded-full hover:bg-pink-600 duration-300 hover:scale-110"
             >
               <FaInstagram />
@@ -279,7 +201,7 @@ function Footer() {
 
             <div className="flex items-center gap-4">
               <FaPhoneAlt className="text-cyan-400 text-xl" />
-              <span>+91 XXXXX XXXXX</span>
+              <span>+91 8956596585</span>
             </div>
 
             <div className="flex items-center gap-4">
@@ -316,7 +238,7 @@ function Footer() {
             © {new Date().getFullYear()}{" "}
             <span className="text-cyan-400 font-semibold">
               Syed Furqan
-            </span>
+            </span>    
             . All Rights Reserved.
           </p>
 
@@ -333,4 +255,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default Footer; 

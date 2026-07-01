@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate, useNavigation } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
 import { users } from "../API/api.js";
+import toast from "react-hot-toast";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -9,26 +10,14 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { profile, isAuthenticated, setIsAuthenticated } = useAuth();
 
-  const handleLogout = async() => {
+  const handleLogout = async () => {
     try {
       setIsAuthenticated(false);
-      const res = await users.post('/logout')
-      alert(res.data.message)
-      // <Navigate to={"/login"} />;
-      // navigate("/login");
+      const res = await users.post("/logout");
+      console.log(`whats th response ! `, res);
+      toast.success("logout !");
     } catch (error) {
-      console.log("erorr :", error.message);
-    }
-  };
-
-  const handleLogin = () => {
-    // alert("login");
-    try {
-      // setIsAuthenticated(false);
-      <Navigate to={"/login"} />;
-      navigate("/login");
-    } catch (error) {
-      console.log("erorr :", error.message);
+      console.log("erorr :", error.response);
     }
   };
 
@@ -83,42 +72,22 @@ function Navbar() {
 
           {/* Desktop Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <Link
-              to="/dashboard"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-semibold transition"
-            >
-              Dashboard
-            </Link>
-
-            {/* login logout  */}
-
-            {/* {isAuthenticated ? (
-              <div>
-                <Link
-                  // to="/login"
-                  className="bg-slate-900 hover:bg-black text-white px-4 py-2 rounded-xl font-semibold transition"
-                >
-                  <button onClick={() => handleLogout()}>Logout</button>
-                </Link>
-              </div>
+            {isAuthenticated && profile.role === "admin" ? (
+              <Link
+                to="/dashboard"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-semibold transition"
+              >
+                Dashboard
+              </Link>
             ) : (
-              <div>
-                <Link
-                  // to="/login"
-                  className="bg-slate-900 hover:bg-black text-white px-4 py-2 rounded-xl font-semibold transition"
-                >
-                  <button onClick={() => handleLogin()}>Login</button>
-                </Link>
-              </div>
-            )} */}
+              ""
+            )}
 
             <Link
-              to="/login"
+              // to="/login"
               className="bg-slate-900 hover:bg-black text-white px-4 py-2 rounded-xl font-semibold transition"
-              onClick={() => handleLogout()}
             >
-              logout
-              {/* <button onClick={() => handleLogout()}>Logout</button> */}
+              <button onClick={() => handleLogout()}>Logout</button>
             </Link>
           </div>
 
@@ -175,20 +144,23 @@ function Navbar() {
                 Contact
               </Link>
 
-              <Link
-                to="/dashboard"
-                onClick={() => setMenuOpen(false)}
-                className="bg-blue-600 text-white p-3 rounded-xl text-center font-semibold"
-              >
-                Dashboard
-              </Link>
+              {isAuthenticated && profile.role === "admin" ? (
+                <Link
+                  to="/dashboard"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-semibold transition"
+                >
+                  Dashboard
+                </Link>
+              ) : (
+                ""
+              )}
 
               <Link
                 to="/login"
                 onClick={() => setMenuOpen(false)}
                 className="bg-slate-900 text-white p-3 rounded-xl text-center font-semibold"
               >
-                Logout
+                <button onClick={() => handleLogout()}>Logout</button>
               </Link>
             </div>
           </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Pencil, Trash2, FileText, Link } from "lucide-react";
 import { Blogs } from "../API/api.js";
 import { useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function Myblog() {
   const [myblogs, setMyblogs] = useState([]);
@@ -28,8 +29,10 @@ function Myblog() {
   }, []);
 
   //  delete blog
-  const handleDelete = (blog_id) => {
+  const handleDelete = async (blog_id) => {
     setMyblogs((prev) => prev.filter((blog) => blog._id !== blog_id));
+    const res = await Blogs.delete(`/delete/${blog_id}`);
+    toast.success(res.data.message || "deleted ");
   };
 
   return (

@@ -1,4 +1,3 @@
-// chat gpt
 import React, { useState } from "react";
 import { users } from "../API/api.js";
 import toast from "react-hot-toast";
@@ -29,7 +28,7 @@ function Login() {
       setProfile(res.data.user);
       setIsAuthenticated(true);
       // alert(res.data.message || "Login Successful");
-      toast.success(res.data.message);
+      toast.success(`Welcome ${res?.data?.user?.name || "user"} !`);
 
       // fetch myProfile()  calling etchProfile API here for direct data in profile
       // const profile = await users.get("/getMyProfile");
