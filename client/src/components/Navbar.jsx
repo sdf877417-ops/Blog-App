@@ -1,22 +1,38 @@
 import React, { useState } from "react";
-import { Link, Navigate, useNavigation } from "react-router-dom";
+import { Link, useNavigate, useNavigation } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
+import { users } from "../API/api.js";
 
 function Navbar() {
-  // const navigate = useNavigation();
+  const navigate = useNavigate();
 
   const [menuOpen, setMenuOpen] = useState(false);
   const { profile, isAuthenticated, setIsAuthenticated } = useAuth();
 
-  const handleLogout = () => {
-    
+  const handleLogout = async() => {
     try {
       setIsAuthenticated(false);
-      <Navigate to={"/"}/>
+      const res = await users.post('/logout')
+      alert(res.data.message)
+      // <Navigate to={"/login"} />;
+      // navigate("/login");
     } catch (error) {
       console.log("erorr :", error.message);
     }
   };
+
+  const handleLogin = () => {
+    // alert("login");
+    try {
+      // setIsAuthenticated(false);
+      <Navigate to={"/login"} />;
+      navigate("/login");
+    } catch (error) {
+      console.log("erorr :", error.message);
+    }
+  };
+
+  console.log(`isAuthenticated vbalue : `, isAuthenticated);
 
   return (
     <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-md border-b">
@@ -74,11 +90,35 @@ function Navbar() {
               Dashboard
             </Link>
 
+            {/* login logout  */}
+
+            {/* {isAuthenticated ? (
+              <div>
+                <Link
+                  // to="/login"
+                  className="bg-slate-900 hover:bg-black text-white px-4 py-2 rounded-xl font-semibold transition"
+                >
+                  <button onClick={() => handleLogout()}>Logout</button>
+                </Link>
+              </div>
+            ) : (
+              <div>
+                <Link
+                  // to="/login"
+                  className="bg-slate-900 hover:bg-black text-white px-4 py-2 rounded-xl font-semibold transition"
+                >
+                  <button onClick={() => handleLogin()}>Login</button>
+                </Link>
+              </div>
+            )} */}
+
             <Link
-              // to="/login"
+              to="/login"
               className="bg-slate-900 hover:bg-black text-white px-4 py-2 rounded-xl font-semibold transition"
+              onClick={() => handleLogout()}
             >
-              <button onClick={() => handleLogout()}>Login</button>
+              logout
+              {/* <button onClick={() => handleLogout()}>Logout</button> */}
             </Link>
           </div>
 
@@ -148,7 +188,7 @@ function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 className="bg-slate-900 text-white p-3 rounded-xl text-center font-semibold"
               >
-               Logout
+                Logout
               </Link>
             </div>
           </div>

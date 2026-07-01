@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard";
 import { useAuth } from "./context/AuthProvider";
 import { Toaster } from "react-hot-toast";
 import Creator from "./Home/Creator";
+import UpateBlog from "./Dashboard/UpateBlog";
 
 function App() {
   const { profile, isAuthenticated } = useAuth();
@@ -27,7 +28,7 @@ function App() {
       {!hideNavBarFooter && <Navbar />}
 
       <Routes>
-        <Route path="/" element={isAuthenticated ? <Home /> : <Login />} />
+        <Route path="/" element={<Home />} />
         <Route path="/blog" element={<Blogs />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
@@ -35,6 +36,9 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/creator" element={<Creator />} />
+
+        {/* update elog  */}
+        <Route path="/updateBlog" element={<UpateBlog />} />
       </Routes>
 
       {!hideNavBarFooter && <Footer />}

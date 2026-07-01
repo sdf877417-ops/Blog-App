@@ -95,9 +95,7 @@ const updateBlog = async (req, res) => {
     );
 
     if (upd) {
-      return res
-        .status(200)
-        .json({ message: "data updated successfully ", data: upd });
+      return res.status(200).json({ upd });
     }
   } catch (error) {
     console.error("error :", error.message);
