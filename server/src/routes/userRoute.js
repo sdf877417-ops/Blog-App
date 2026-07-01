@@ -1,6 +1,7 @@
 import express from "express";
 import {
   getAdmin,
+  getCreator,
   getMyProfile,
   login,
   logout,
@@ -21,6 +22,8 @@ userRouter.post("/logout", logout);
 userRouter.get("/getAdmin", isAuthenticated, getAdmin);
 
 userRouter.get("/getMyProfile", isAuthenticated, getMyProfile);
+
+userRouter.get('/getcreator/:id',getCreator)
 
 userRouter.put(
   "/updateUser/:id",

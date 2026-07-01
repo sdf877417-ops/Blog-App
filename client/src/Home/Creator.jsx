@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { users } from "../API/api.js";
+import { Link } from "react-router-dom";
 
 function Creator() {
   const [admin, setAdmin] = useState([]);
@@ -15,6 +16,13 @@ function Creator() {
     }
   };
 
+  const getProfile = async (id) => {
+    try {
+      alert(id);
+    } catch (error) {
+      console.log("eror :", error.response);
+    }
+  };
   useEffect(() => {
     getAdmin();
   }, []);
@@ -84,15 +92,22 @@ function Creator() {
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-bold text-gray-800">{Math.ceil(Math.random() * 20)}★</h3>
+                      <h3 className="text-xl font-bold text-gray-800">
+                        {Math.ceil(Math.random() * 20)}★
+                      </h3>
                       <p className="text-gray-500 text-sm">Quality</p>
                     </div>
                   </div>
 
                   {/* Button */}
-                  <button className="mt-8 w-full py-3 rounded-xl bg-black text-white font-semibold hover:bg-indigo-600 transition duration-300 cursor-pointer">
-                    View Profile
-                  </button>
+                  <Link to={`getcreator/${elem._id}`}>
+                    <button
+                      className="mt-8 w-full py-3 rounded-xl bg-black text-white font-semibold hover:bg-indigo-600 transition duration-300 cursor-pointer"
+                      // onClick={() => getProfile(elem._id)}
+                    >
+                      View Profile
+                    </button>
+                  </Link>
                 </div>
               </div>
             ))}

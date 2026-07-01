@@ -137,4 +137,19 @@ const getMyProfile = async (req, res) => {
   }
 };
 
-export { signUp, login, logout, getAdmin, getMyProfile };
+const getCreator = async (req, res) => {
+  try {
+    const { id } = req.params.id;
+    const data = await userModel.findById(req.params.id);
+
+    // console.log(`data :-> at get cretor `,data)
+    if (!data) {
+      return res.status(400).json({ message: "not foundn" });
+    }
+
+    return res.status(200).json({ data });
+  } catch (error) {
+    console.log("erorr :->", error.mesage);
+  }
+};
+export { signUp, login, logout, getAdmin, getMyProfile, getCreator };
