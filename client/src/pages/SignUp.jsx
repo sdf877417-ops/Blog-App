@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { users } from "../API/api.js";
 import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -47,7 +48,8 @@ function SignUp() {
       const res = await users.post("/signup", formData);
 
       console.log("Signup Success:", res.data);
-      alert("Account Created Successfully");
+      // alert("");
+      toast.success("Account Created Successfully !");
 
       setEmail("");
       setPassword("");

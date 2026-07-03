@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Blogs } from "../API/api";
@@ -36,10 +35,8 @@ function Detail() {
   return (
     <section className="bg-gray-100 min-h-screen py-10">
       <div className="max-w-6xl mx-auto px-4">
-
         {/* Main Card */}
         <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
-
           {/* Blog Image */}
           <div className="w-full">
             <img
@@ -51,7 +48,6 @@ function Detail() {
 
           {/* Content */}
           <div className="p-6 md:p-10">
-
             {/* Category */}
             <span className="inline-block bg-indigo-100 text-indigo-700 px-4 py-1 rounded-full text-sm font-semibold">
               {blog.category}
@@ -64,7 +60,6 @@ function Detail() {
 
             {/* Author Section */}
             <div className="flex flex-wrap items-center justify-between gap-5 mt-8 border-y py-5">
-
               <div className="flex items-center gap-4">
                 <img
                   src={
@@ -80,27 +75,19 @@ function Detail() {
                     {blog.createdBy?.name || "Admin"}
                   </h3>
 
-                  <p className="text-gray-500 text-sm">
-                    Blog Creator
-                  </p>
+                  <p className="text-gray-500 text-sm">Blog Creator</p>
                 </div>
               </div>
 
               <div className="text-sm text-gray-500 space-y-1">
-                <p>
-                  📅{" "}
-                  {new Date(blog.createdAt).toLocaleDateString()}
-                </p>
+                <p>📅 {new Date(blog.createdAt).toLocaleDateString()}</p>
 
                 <p>⏱️ 5 min read</p>
               </div>
-
             </div>
 
             {/* About Heading */}
-            <h2 className="text-3xl font-bold mt-10 mb-6">
-              About this Blog
-            </h2>
+            <h2 className="text-3xl font-bold mt-10 mb-6">About this Blog</h2>
 
             {/* Blog Content */}
             <div className="text-gray-700 text-lg leading-9 whitespace-pre-line">
@@ -109,29 +96,18 @@ function Detail() {
 
             {/* Divider */}
             <div className="border-t mt-12 pt-8">
-
               <div className="bg-gray-50 rounded-2xl p-6">
-
-                <h3 className="text-2xl font-bold mb-4">
-                  📌 Blog Information
-                </h3>
+                <h3 className="text-2xl font-bold mb-4">📌 Blog Information</h3>
 
                 <div className="grid sm:grid-cols-2 gap-5">
-
                   <div>
-                    <p className="text-gray-500 text-sm">
-                      Category
-                    </p>
+                    <p className="text-gray-500 text-sm">Category</p>
 
-                    <h4 className="font-semibold text-lg">
-                      {blog.category}
-                    </h4>
+                    <h4 className="font-semibold text-lg">{blog.category}</h4>
                   </div>
 
                   <div>
-                    <p className="text-gray-500 text-sm">
-                      Author
-                    </p>
+                    <p className="text-gray-500 text-sm">Author</p>
 
                     <h4 className="font-semibold text-lg">
                       {blog.createdBy?.name || "Admin"}
@@ -139,9 +115,7 @@ function Detail() {
                   </div>
 
                   <div>
-                    <p className="text-gray-500 text-sm">
-                      Published
-                    </p>
+                    <p className="text-gray-500 text-sm">Published</p>
 
                     <h4 className="font-semibold text-lg">
                       {new Date(blog.createdAt).toDateString()}
@@ -149,25 +123,15 @@ function Detail() {
                   </div>
 
                   <div>
-                    <p className="text-gray-500 text-sm">
-                      Reading Time
-                    </p>
+                    <p className="text-gray-500 text-sm">Reading Time</p>
 
-                    <h4 className="font-semibold text-lg">
-                      5 Minutes
-                    </h4>
+                    <h4 className="font-semibold text-lg">5 Minutes</h4>
                   </div>
-
                 </div>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
     </section>
   );
