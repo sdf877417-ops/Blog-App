@@ -36,23 +36,30 @@ const isAuthenticated = async (req, res, next) => {
 
 // authorization
 
-const isAdmin =  (...roles) => {
+const isAdmin = (...roles) => {
   console.log(`value in ...role `, roles);
   console.log(`value in req.user.role`, req.user);
   try {
     return (req, res, next) => {
       if (!roles.includes(req.user.role)) {
-        return res
-          .status(400)
-          .json({
-            message: `user with this role ${req.user.role} is not found`,
-          });
+        return res.status(400).json({
+          message: `user with this role ${req.user.role} is not found`,
+        });
       }
-      next()
+      next();
     };
   } catch (error) {
     console.error("error :", error.message);
   }
 };
 
-export { isAuthenticated , isAdmin};
+// super admin
+export const isSuperAdmin = async (req,res,next) => {
+  try {
+    console.log(`value in req.cookies:===`,req.cookies.adminToken)
+    
+  } catch (error) {
+    console.error("error :-->", error.message);
+  }
+};
+export { isAuthenticated, isAdmin };

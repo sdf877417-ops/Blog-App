@@ -15,6 +15,8 @@ import Creator from "./Home/Creator";
 import UpateBlog from "./Dashboard/UpateBlog";
 import Detail from "./pages/Detail";
 import GetCreator from "./Home/GetCreator";
+import LoginsuperAdmin from "./superAdmin/LoginSuperAdmin";
+import DeleteBlogBySuperAdmin from "./superAdmin/DeleteBlogBySuperAdmin";
 
 function App() {
   const { profile, isAuthenticated } = useAuth();
@@ -35,11 +37,9 @@ function App() {
 
         <Route path="/blog" element={isAuthenticated ? <Blogs /> : <Login />} />
 
-        
         {/* redirecting to page  impo */}
-        <Route path="/blog/:id" element={<Detail/>} />
-        <Route path="/getcreator/:id" element={<GetCreator/>} />
-        
+        <Route path="/blog/:id" element={<Detail />} />
+        <Route path="/getcreator/:id" element={<GetCreator />} />
 
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
@@ -54,6 +54,10 @@ function App() {
 
         {/* update elog  */}
         <Route path="/updateBlog" element={<UpateBlog />} />
+
+        {/* SUPERADMIN LOGIC 💀💀💀  */}
+        <Route path="/login/superAdmin" element={<LoginsuperAdmin />} />
+        <Route path="/deleteBlogBysuperAdmin" element={<DeleteBlogBySuperAdmin />} />
       </Routes>
 
       {!hideNavBarFooter && <Footer />}

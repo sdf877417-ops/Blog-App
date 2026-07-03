@@ -63,7 +63,7 @@ function CreateBlog() {
       setFormData("");
       toast.success(res.data.message || " blog created ! ");
     } catch (error) {
-      console.log("erorr at create blog :::---->", error.response);
+      console.log("erorr at create blog :::---->", error?.response);
     }
   };
 

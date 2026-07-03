@@ -91,6 +91,18 @@ function Navbar() {
             </Link>
           </div>
 
+          {/* super admin */}
+          {isAuthenticated && profile.role === "superAdmin" ? (
+            <Link
+              to="/deleteBlogBysuperAdmin"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-semibold transition"
+            >
+              superAdminDel
+            </Link>
+          ) : (
+            ""
+          )}
+
           {/* Mobile Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -111,7 +123,6 @@ function Navbar() {
               >
                 Home
               </Link>
-
               <Link
                 to="/blog"
                 onClick={() => setMenuOpen(false)}
@@ -119,7 +130,6 @@ function Navbar() {
               >
                 Blog
               </Link>
-
               <Link
                 to="/creator"
                 onClick={() => setMenuOpen(false)}
@@ -127,7 +137,6 @@ function Navbar() {
               >
                 Creator
               </Link>
-
               <Link
                 to="/about"
                 onClick={() => setMenuOpen(false)}
@@ -135,7 +144,6 @@ function Navbar() {
               >
                 About
               </Link>
-
               <Link
                 to="/contact"
                 onClick={() => setMenuOpen(false)}
@@ -143,8 +151,8 @@ function Navbar() {
               >
                 Contact
               </Link>
-
-              {isAuthenticated && profile.role === "admin" ? (
+              {/* only """admin"""  wala logic is here  */}
+              {(isAuthenticated && profile.role === "admin") || "superAdmin" ? (
                 <Link
                   to="/dashboard"
                   className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-semibold transition"
@@ -155,6 +163,17 @@ function Navbar() {
                 ""
               )}
 
+              {/* super admin */}
+              {isAuthenticated && profile.role === "superAdmin" ? (
+                <Link
+                  to="/deleteBlogBysuperAdmin"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-semibold transition"
+                >
+                  superAdminDel
+                </Link>
+              ) : (
+                ""
+              )}
               <Link
                 to="/login"
                 onClick={() => setMenuOpen(false)}

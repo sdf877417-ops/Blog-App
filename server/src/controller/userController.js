@@ -3,6 +3,8 @@ import cookie from "cookie-parser";
 import userModel from "../models/user.Model.js";
 import cloudinary from "../services/cloudinary.js";
 import { comparePassword, hashPassword } from "../services/HashPassword.js";
+import req from "express-cookie/lib/request.js";
+import e from "express";
 
 const signUp = async (req, res) => {
   console.log(`reqqust aayi `);
@@ -152,4 +154,16 @@ const getCreator = async (req, res) => {
     console.log("erorr :->", error.mesage);
   }
 };
-export { signUp, login, logout, getAdmin, getMyProfile, getCreator };
+
+// super admin
+
+
+
+export {
+  signUp,
+  login,
+  logout,
+  getAdmin,
+  getMyProfile,
+  getCreator
+};

@@ -25,7 +25,7 @@ blogRoute.post(
 
 blogRoute.get("/getOne/:id", isAuthenticated, getOneBlog);
 
-blogRoute.delete("/delete/:id", isAuthenticated, isAdmin("admin"), deleteBlog);
+blogRoute.delete("/delete/:id", isAuthenticated, isAdmin("admin , superAdmin"), deleteBlog);
 
 blogRoute.put(
   "/update/:id",
