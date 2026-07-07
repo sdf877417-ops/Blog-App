@@ -40,16 +40,14 @@ function Login() {
       setRole("");
 
       // navigate("/dashboard");
-      navigate("/");  
+      navigate("/");
     } catch (error) {
       console.log("erorr :", error);
       console.log("erorr.response :", error.response);
       console.log(error.response?.data);
 
       // alert(error.response?.data?.message || "Something went wrong");
-      toast.error(
-        error.response?.data?.message || "error is there check console",
-      );
+      toast.error(error.response || "error is there check console");
       setEmail("");
       setPassword("");
       setRole("");
@@ -89,7 +87,7 @@ function Login() {
             <option value="admin">Admin</option>
           </select>
           <p className="">
-            New user  ?{" "}
+            New user ?{" "}
             <span className=" font-bold  text-xl">
               <Link
                 to={"/signup"}

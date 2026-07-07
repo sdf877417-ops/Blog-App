@@ -22,7 +22,6 @@ import DeleteBlogBySuperAdmin from "./superAdmin/DeleteBlogBySuperAdmin";
 // import SuperAdmin from "./superAdmin/superAdmin.jsx";
 import SprAdmin from "./superAdmin/SprAdmin.jsx";
 
-
 function App() {
   const { profile, isAuthenticated } = useAuth();
   const location = useLocation();
@@ -37,9 +36,8 @@ function App() {
       {!hideNavBarFooter && <Navbar />}
 
       <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
-        {/* <Route path="/" element={isAuthenticated ? <Home /> : <Login />} /> */}
-        <Route path="/" element={<Home/>} />
+        <Route path="/" element={isAuthenticated ? <Home /> : <Login />} />
+
         <Route path="/blog" element={isAuthenticated ? <Blogs /> : <Login />} />
 
         {/* redirecting to page  impo */}
