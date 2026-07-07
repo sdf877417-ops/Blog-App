@@ -39,7 +39,6 @@ function Login() {
       setPassword("");
       setRole("");
 
-      // navigate("/dashboard");
       navigate("/");
     } catch (error) {
       console.log("erorr :", error);
