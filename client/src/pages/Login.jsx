@@ -16,6 +16,7 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    alert("login")
 
     try {
       const res = await users.post("/login", {
@@ -40,7 +41,7 @@ function Login() {
       setRole("");
 
       // navigate("/dashboard");
-      navigate("/");
+      navigate("/");  
     } catch (error) {
       console.log("erorr :", error);
       console.log("erorr.response :", error.response);
