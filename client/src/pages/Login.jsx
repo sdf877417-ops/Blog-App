@@ -3,6 +3,7 @@ import { users } from "../API/api.js";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider.jsx";
+import axios from "axios";
 
 function Login() {
   const navigate = useNavigate();
@@ -18,11 +19,20 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await users.post("/login", {
-        email,
-        password,
-        role,
-      });
+      // const res = await users.post("/login", {
+      //   email,
+      //   password,
+      //   role,
+      // });
+
+      const res = await axios.post(
+        "https://blog-app-backend-x81h.onrender.com/api/user/login",
+        {
+          name,
+          email,
+          password,
+        },
+      );
 
       console.log("res.data :-- ", res?.data);
       setProfile(res.data.user);
