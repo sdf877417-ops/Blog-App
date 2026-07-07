@@ -15,11 +15,20 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://blog-app-backend-x81h.onrender.com",
-      // https://blog-app-backend-x81h.onrender.com/api/user/login
+      "https://blog-app-69b7.vercel.app",
+      // https://blog-app-69b7.vercel.app/
     ],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   }),
+
+  //   // app.use(
+  //   // cors({
+  //   //   origin: "https://blog-app-69b7.vercel.app",
+  //   //   credentials: true,
+  //   //   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  //   // })
+  // );
 );
 
 connectDB(process.env.DBURL);
