@@ -19,17 +19,11 @@ app.use(
       // https://blog-app-69b7.vercel.app/
     ],
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   }),
-
-  //   // app.use(
-  //   // cors({
-  //   //   origin: "https://blog-app-69b7.vercel.app",
-  //   //   credentials: true,
-  //   //   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-  //   // })
-  // );
 );
+
+app.options("*", cors());
 
 connectDB(process.env.DBURL);
 
