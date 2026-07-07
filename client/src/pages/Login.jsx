@@ -16,15 +16,10 @@ function Login() {
   const [role, setRole] = useState("user");
 
   const handleLogin = async (e) => {
+    alert("login req qaati ");
     e.preventDefault();
 
     try {
-      // const res = await users.post("/login", {
-      //   email,
-      //   password,
-      //   role,
-      // });
-
       const res = await axios.post(
         "https://blog-app-backend-x81h.onrender.com/api/user/login",
         {
@@ -33,7 +28,6 @@ function Login() {
           role,
         },
       );
-      alert("login req qaati ");
       console.log("res.data :-- ", res?.data);
       setProfile(res.data.user);
       setIsAuthenticated(true);
@@ -51,12 +45,12 @@ function Login() {
 
       navigate("/");
     } catch (error) {
-      console.log("erorr :", error);
-      console.log("erorr.response :", error.response);
-      console.log(error.response?.data);
-
+      
       // alert(error.response?.data?.message || "Something went wrong");
-      toast.error(error.response || "error is there check console");
+      alert(error.response);
+      console.log("LOGIN WALA erorr :", error);
+      console.log("LOGIN WALA erorr.response :", error.response);
+      console.log(error.response?.data);
       setEmail("");
       setPassword("");
       setRole("");
