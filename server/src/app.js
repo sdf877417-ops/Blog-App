@@ -23,7 +23,6 @@ app.use(
   }),
 );
 
-app.options("*", cors());
 
 connectDB(process.env.DBURL);
 
