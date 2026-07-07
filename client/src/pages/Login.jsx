@@ -17,7 +17,7 @@
 
 //   const handleLogin = async (e) => {
 //     e.preventDefault();
-    
+
 //     try {
 //       const res = await axios.post(
 //         "https://blog-app-backend-x81h.onrender.com/api/user/login",
@@ -45,7 +45,7 @@
 
 //       navigate("/");
 //     } catch (error) {
-      
+
 //       // alert(error.response?.data?.message || "Something went wrong");
 //       alert(error.response);
 //       console.log("LOGIN WALA erorr :", error);
@@ -116,7 +116,6 @@
 
 // export default Login;
 
-
 import React, { useState } from "react";
 import { users } from "../API/api";
 import toast from "react-hot-toast";
@@ -156,7 +155,7 @@ function Login() {
 
     try {
       setLoading(true);
-
+      alert("res ka niche tak aay mian");
       const { data } = await users.post(
         "/login",
         {
@@ -166,7 +165,7 @@ function Login() {
         },
         {
           withCredentials: true,
-        }
+        },
       );
 
       console.log("Login Success :", data);
@@ -184,15 +183,11 @@ function Login() {
         console.log("Status :", error.response.status);
         console.log("Response :", error.response.data);
 
-        toast.error(
-          error.response.data?.message || "Login failed"
-        );
+        toast.error(error.response.data?.message || "Login failed");
       } else if (error.request) {
         console.log("No Response :", error.request);
 
-        toast.error(
-          "Server not responding. Check backend or CORS."
-        );
+        toast.error("Server not responding. Check backend or CORS.");
       } else {
         console.log("Error :", error.message);
 
@@ -206,13 +201,9 @@ function Login() {
   return (
     <div className="min-h-screen bg-slate-100 flex justify-center items-center px-4">
       <div className="bg-white shadow-xl rounded-xl p-8 w-full max-w-md">
-
-        <h1 className="text-3xl font-bold text-center mb-6">
-          Login
-        </h1>
+        <h1 className="text-3xl font-bold text-center mb-6">Login</h1>
 
         <form onSubmit={handleLogin} className="space-y-4">
-
           <input
             type="email"
             name="email"
@@ -250,16 +241,11 @@ function Login() {
 
           <p className="text-center">
             New User?{" "}
-            <Link
-              to="/signup"
-              className="font-bold text-blue-600"
-            >
+            <Link to="/signup" className="font-bold text-blue-600">
               Signup
             </Link>
           </p>
-
         </form>
-
       </div>
     </div>
   );
