@@ -16,7 +16,6 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    alert("login")
 
     try {
       const res = await users.post("/login", {
