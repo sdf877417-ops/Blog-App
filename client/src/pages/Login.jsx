@@ -28,12 +28,12 @@ function Login() {
       const res = await axios.post(
         "https://blog-app-backend-x81h.onrender.com/api/user/login",
         {
-          name,
           email,
           password,
+          role,
         },
       );
-
+      alert("login req qaati ");
       console.log("res.data :-- ", res?.data);
       setProfile(res.data.user);
       setIsAuthenticated(true);
