@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import LoginsuperAdmin from "./LoginSuperAdmin";
 import DeleteBlogBySuperAdmin from "./DeleteBlogBySuperAdmin";
 
-function SuperAdmin() {
+function SprAdmin() {
   const naviaget = useNavigate();
   const handleNavigate = (path) => {
     return naviaget(`/${path}`);
@@ -21,4 +21,6 @@ function SuperAdmin() {
   );
 }
 
-export default SuperAdmin;
+export default SprAdmin
+
+
