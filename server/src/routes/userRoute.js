@@ -33,11 +33,7 @@ userRouter.get("/getMyProfile", isAuthenticated, getMyProfile);
 
 userRouter.get("/getcreator/:id", getCreator);
 
-userRouter.put(
-  "/updateUser/:id",
-  isAuthenticated,
-  isAdmin("admin"),
-  updateUser,
+userRouter.put("/updateUser/:id",isAuthenticated,isAdmin("admin"),updateUser,
 );
 
 

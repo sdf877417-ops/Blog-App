@@ -17,12 +17,12 @@
 import axios from "axios";
 
 const Blogs = axios.create({
-  baseURL: "https://blog-app-ecm9.onrender.com/api/blog",
+  baseURL: "https://blog-app-backend-x81h.onrender.com/api/blog",
   withCredentials: true,
 });
 
 const users = axios.create({
-  baseURL: "https://blog-app-ecm9.onrender.com/api/user",
+  baseURL: "https://blog-app-backend-x81h.onrender.com/api/user",
 
   withCredentials: true,
 });

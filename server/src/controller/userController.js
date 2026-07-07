@@ -60,6 +60,10 @@ const signUp = async (req, res) => {
 
 const login = async (req, res) => {
   try {
+    console.log(
+      `value in login at backed :  email, password, role :`,
+      req.body,
+    );
     const { email, password, role } = req.body;
     if (!password || !email || !role) {
       return res.status(400).json({ message: "all fields are required" });
@@ -157,13 +161,4 @@ const getCreator = async (req, res) => {
 
 // super admin
 
-
-
-export {
-  signUp,
-  login,
-  logout,
-  getAdmin,
-  getMyProfile,
-  getCreator
-};
+export { signUp, login, logout, getAdmin, getMyProfile, getCreator };
