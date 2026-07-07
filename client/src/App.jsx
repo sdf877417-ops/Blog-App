@@ -16,6 +16,8 @@ import UpateBlog from "./Dashboard/UpateBlog";
 import Detail from "./pages/Detail";
 import GetCreator from "./Home/GetCreator";
 import LoginsuperAdmin from "./superAdmin/LoginSuperAdmin";
+import SuperAdmin from "./superAdmin/superAdmin";
+import DeleteUsers from "./superAdmin/DeleteUsers";
 import DeleteBlogBySuperAdmin from "./superAdmin/DeleteBlogBySuperAdmin";
 
 function App() {
@@ -57,7 +59,12 @@ function App() {
 
         {/* SUPERADMIN LOGIC 💀💀💀  */}
         <Route path="/login/superAdmin" element={<LoginsuperAdmin />} />
-        <Route path="/deleteBlogBysuperAdmin" element={<DeleteBlogBySuperAdmin />} />
+        <Route path="/SuperAdmin" element={<SuperAdmin />} />
+
+        <Route path="/DeleteUsers" element={<DeleteUsers/>} />
+        <Route path="/DeleteBlog" element={<DeleteBlogBySuperAdmin/>} />
+
+
       </Routes>
 
       {!hideNavBarFooter && <Footer />}

@@ -15,7 +15,7 @@ function Creator() {
       toast.error(error.response?.data?.message || "Failed to fetch admins");
     }
   };
-
+  
   const getProfile = async (id) => {
     try {
       alert(id);

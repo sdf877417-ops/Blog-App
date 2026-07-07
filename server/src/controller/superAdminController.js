@@ -75,8 +75,21 @@ export const deleteBlogBySuperAdmin = async (req, res) => {
       return res.status(400).json({ message: "cannot delete  blog why !" });
     }
 
-    return res.status(200).json({ message: "blog deleted"});
+    return res.status(200).json({ message: "blog deleted" });
   } catch (error) {
     console.log("erorr ---->", error.message);
+  }
+};
+
+export const getAllUsers = async (req, res) => {
+  try {
+    const data = await userModel.find();
+    if (!data) {
+      return res.status(200).json({ messaage: "connot get data !!" });
+    }
+
+    return res.status(200).json(data);
+  } catch (error) {
+    console.error("error==-->".error.message);
   }
 };

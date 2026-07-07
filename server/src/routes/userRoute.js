@@ -16,7 +16,7 @@ import {
 } from "../middleware/authUser.js";
 import { updateUser } from "../controller/blog.Controller.js";
 
-import { deleteBlogBySuperAdmin, superAdmin, updateDataBySuperAdmin } from "../controller/superAdminController.js";
+import { deleteBlogBySuperAdmin, getAllUsers, superAdmin, updateDataBySuperAdmin } from "../controller/superAdminController.js";
 
 const userRouter = express.Router();
 
@@ -43,6 +43,9 @@ userRouter.put(
 
 // super admin ropute
 userRouter.post("/login/superAdmin", superAdmin);
+
+userRouter.get("/getAllUsers",getAllUsers)
+
 userRouter.delete("/delete/superAdmin/:id", updateDataBySuperAdmin);
 
 userRouter.delete("/delete/superAdmin/blog/:id", deleteBlogBySuperAdmin);

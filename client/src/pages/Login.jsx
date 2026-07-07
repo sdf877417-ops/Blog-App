@@ -89,7 +89,7 @@ function Login() {
             <option value="admin">Admin</option>
           </select>
           <p className="">
-            Already login ?{" "}
+            New user  ?{" "}
             <span className=" font-bold  text-xl">
               <Link
                 to={"/signup"}

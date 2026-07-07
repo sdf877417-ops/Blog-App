@@ -40,7 +40,7 @@ function LoginsuperAdmin() {
       setRole("");
 
       // navigate("/dashboard");
-      navigate("/deleteBlogBysuperAdmin");
+      navigate("/SuperAdmin");
     } catch (error) {
       console.log("erorr :", error);
       console.log("erorr.response :", error.response);

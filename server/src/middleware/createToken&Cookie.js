@@ -12,9 +12,9 @@ const createTokenandCookie = async (id, res) => {
     // console.log(`toke generate or not`,token);
     // cookie
     res.cookie("token", token, {
-      httpOnly: true,
+      httpOnly: false, // xss
       secure: true,
-      samesite: "strict",
+      samesite: "none", // csrf
     });
 
     const upd = await userModel.findByIdAndUpdate(id, { token });

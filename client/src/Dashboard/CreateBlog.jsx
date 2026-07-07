@@ -60,8 +60,9 @@ function CreateBlog() {
       const data = {};
       const res = await Blogs.post("/post", formData);
       console.log("res.data :", res.data);
-      setFormData("");
-      toast.success(res.data.message || " blog created ! ");
+      setFormData(" ");
+      toast.success(res?.data?.mesage || " blog created ! ");
+      alert(res.data.mesage)
     } catch (error) {
       console.log("erorr at create blog :::---->", error?.response);
     }

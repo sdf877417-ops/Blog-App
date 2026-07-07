@@ -29,11 +29,34 @@ function Myblog() {
   }, []);
 
   //  delete blog
+  // const handleDelete = async (blog_id) => {
+  //   alert(blog_id)
+  //   const res = await Blogs.delete(`/delete/${blog_id}`);
+  //   http://localhost:9000/api/blog/delete/6a3a3ccb7cb7f5b9667ff441
+  //   setMyblogs((prev) => prev.filter((blog) => blog._id !== blog_id));
+  //   toast.success(res.data.message || "deleted ");
+  // };
+
   const handleDelete = async (blog_id) => {
-    setMyblogs((prev) => prev.filter((blog) => blog._id !== blog_id));
+  try {
+    console.log("Deleting:", blog_id);
+
     const res = await Blogs.delete(`/delete/${blog_id}`);
-    toast.success(res.data.message || "deleted ");
-  };
+
+    console.log("Response:", res.data);
+
+    setMyblogs((prev) =>
+      prev.filter((blog) => blog._id !== blog_id)
+    );
+
+    toast.success(res.data.message || "Deleted");
+  } catch (error) {
+    console.log("Full Error:", error);
+    console.log("Status:", error.response?.status);
+    console.log("Response:", error.response?.data);
+    console.log("Message:", error.message);
+  }
+};
 
   return (
     <div className="w-full">
