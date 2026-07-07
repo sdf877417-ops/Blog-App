@@ -24,7 +24,7 @@ function Login() {
         role,
       });
 
-      console.log("res.data :-- ", res.data?.response);
+      console.log("res.data :-- ", res?.data);
       setProfile(res.data.user);
       setIsAuthenticated(true);
       // alert(res.data.message || "Login Successful");

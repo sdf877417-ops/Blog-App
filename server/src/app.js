@@ -16,6 +16,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://blog-app-backend-x81h.onrender.com",
+      // https://blog-app-backend-x81h.onrender.com/api/user/login
     ],
     credentials: true,
   }),
