@@ -13,9 +13,12 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://blog-app-ecm9.onrender.com"],
+    origin: [
+      "http://localhost:5173",
+      "https://blog-app-ecm9.onrender.com",
+    ],
     credentials: true,
-  }),
+  })
 );
 
 connectDB(process.env.DBURL);
