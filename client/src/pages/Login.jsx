@@ -155,7 +155,7 @@ function Login() {
 
     try {
       setLoading(true);
-      alert("res ka niche tak aay mian");
+      alert("res ka upar tak aay mian");
       const { data } = await users.post(
         "/login",
         {

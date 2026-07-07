@@ -11,19 +11,24 @@ dotenv.config();
 
 const app = express();
 
+// app.use(
+//   cors({
+//     origin: ["http://localhost:5173", "https://blog-app-69b7.vercel.app"],
+//     credentials: true,
+//     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+//   }),
+// );
+
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://blog-app-69b7.vercel.app",
-      // https://blog-app-69b7.vercel.app/
-    ],
+    origin: "https://blog-app-five-ashen.vercel.app",
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-  }),
+    methods: ["GET","POST","PUT","DELETE"],
+    allowedHeaders:["Content-Type","Authorization"]
+  })
 );
-
-
+  
 connectDB(process.env.DBURL);
 
 app.use(cookieParser());
