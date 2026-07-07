@@ -15,10 +15,10 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://blog-app-ecm9.onrender.com",
+      "https://blog-app-backend-x81h.onrender.com",
     ],
     credentials: true,
-  })
+  }),
 );
 
 connectDB(process.env.DBURL);
