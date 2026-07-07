@@ -38,8 +38,8 @@ function App() {
 
       <Routes>
         {/* <Route path="/" element={<Home />} /> */}
-        <Route path="/" element={isAuthenticated ? <Home /> : <Login />} />
-
+        {/* <Route path="/" element={isAuthenticated ? <Home /> : <Login />} /> */}
+        <Route path="/" element={<Home/>} />
         <Route path="/blog" element={isAuthenticated ? <Blogs /> : <Login />} />
 
         {/* redirecting to page  impo */}
