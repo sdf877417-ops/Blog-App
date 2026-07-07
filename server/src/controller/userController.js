@@ -97,6 +97,10 @@ const login = async (req, res) => {
     });
   } catch (error) {
     console.error("error : ", error.message);
+
+    return res.status(500).json({
+      message: error.message,
+    });
   }
 };
 
